@@ -50,3 +50,4 @@ Copyright (c) 2019 **_Ike Esquivel-Pilloud_**
 
 * -6: brainstorm visual structure
 * -7: troubleshoot and set foundations for user interface
+* -8: continue study of redux
