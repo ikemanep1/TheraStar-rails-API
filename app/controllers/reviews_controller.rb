@@ -6,12 +6,16 @@ class ReviewsController < ApplicationController
       @reviews = Review.search(name)
       json_response(@reviews)
     elsif
-      link = params[:link]
-      @reviews = Review.search(link)
+      subject = params[:subject]
+      @reviews = Review.search(subject)
+      json_response(@reviews)
+    elsif
+      rating = params[:rating]
+      @reviews = Review.search(rating)
       json_response(@reviews)
     else
-      description = params[:description]
-      @reviews = Review.description_search(description)
+      content = params[:content]
+      @reviews = Review.search(content)
       json_response(@reviews)
     end
   end
@@ -46,6 +50,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.permit(:name, :description, :link)
+    params.permit(:name, :subject, :rating, :content)
   end
 end
