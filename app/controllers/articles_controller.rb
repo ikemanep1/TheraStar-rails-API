@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
       json_response(@articles)
     elsif
       link = params[:link]
-      @articles = Article.search(link)
+      @articles = Article.link_search(link)
       json_response(@articles)
     else
       description = params[:description]
