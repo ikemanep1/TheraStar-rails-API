@@ -7,15 +7,15 @@ class ReviewsController < ApplicationController
       json_response(@reviews)
     elsif
       subject = params[:subject]
-      @reviews = Review.search(subject)
+      @reviews = Review.subject_search(subject)
       json_response(@reviews)
     elsif
       rating = params[:rating]
-      @reviews = Review.search(rating)
+      @reviews = Review.rating_search(rating)
       json_response(@reviews)
     else
       content = params[:content]
-      @reviews = Review.search(content)
+      @reviews = Review.content_search(content)
       json_response(@reviews)
     end
   end

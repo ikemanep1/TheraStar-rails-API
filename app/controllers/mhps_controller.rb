@@ -7,7 +7,7 @@ class MhpsController < ApplicationController
       json_response(@mhps)
     elsif
       occupation = params[:occupation]
-      @mhps = Mhp.search(occupation)
+      @mhps = Mhp.occupation_search(occupation)
       json_response(@mhps)
     elsif
       address = params[:address]
