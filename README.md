@@ -49,3 +49,4 @@ Copyright (c) 2019 **_Ike Esquivel-Pilloud_**
 * -5: recreate project as ordinary rails project, manually convert to API to kill bugs
 
 * -6: brainstorm visual structure
+* -7: troubleshoot and set foundations for user interface
