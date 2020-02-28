@@ -9,6 +9,7 @@ class CreateMhps < ActiveRecord::Migration[5.2]
       t.column :email, :string
       t.column :phone, :integer
       t.column :bio, :string
+      t.column :link, :string
       t.timestamps
     end
   end

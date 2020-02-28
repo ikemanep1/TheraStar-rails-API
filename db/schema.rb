@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_191244) do
     t.string "email"
     t.integer "phone"
     t.string "bio"
+    t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
