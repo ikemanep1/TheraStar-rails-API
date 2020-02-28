@@ -46,3 +46,4 @@ Copyright (c) 2019 **_Ike Esquivel-Pilloud_**
 * -2: study previous ruby capstones for inspiration, catch-up on ruby knowledge
 * -3: research mental health practitioners in the Portland area
 * -4: brainstorm database structure
+* -5: recreate project as ordinary rails project, manually convert to API to kill bugs
