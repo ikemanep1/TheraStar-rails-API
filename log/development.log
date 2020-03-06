@@ -1209,3 +1209,10 @@ Processing by MhpsController#index as */*
 Completed 200 OK in 87ms (Views: 35.4ms | ActiveRecord: 48.9ms)
 
 
+Started GET "/mhps" for ::1 at 2020-03-06 10:56:46 -0800
+Processing by MhpsController#index as */*
+  [1m[36mMhp Load (0.8ms)[0m  [1m[34mSELECT "mhps".* FROM "mhps" WHERE (link like '%%')[0m
+  ↳ app/controllers/mhps_controller.rb:69
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.8ms)
+
+
