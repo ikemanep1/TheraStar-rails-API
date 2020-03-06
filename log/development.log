@@ -251,3 +251,961 @@ FOREIGN KEY ("mhp_id")
   ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (394.8ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (319.3ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (63.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateMhps (20200228190443)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (44.3ms)[0m  [1m[35mCREATE TABLE "mhps" ("id" bigserial primary key, "name" character varying, "occupation" character varying, "address" character varying, "insurance" character varying, "accepting" character varying, "email" character varying, "phone" integer, "bio" character varying, "link" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228190443_create_mhps.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228190443"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateArticles (20200228191112)
+  [1m[35m (40.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "name" character varying, "link" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228191112_create_articles.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191112"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateReviews (20200228191244)
+  [1m[35m (40.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "name" character varying, "subject" character varying, "rating" integer, "content" character varying, "mhp_id" integer)[0m
+  ↳ db/migrate/20200228191244_create_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191244"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to AddForeignKeyForReviews (20200228212911)
+  [1m[35m (52.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_5899c72735"
+FOREIGN KEY ("mhp_id")
+  REFERENCES "mhps" ("id")
+[0m
+  ↳ db/migrate/20200228212911_add_foreign_key_for_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228212911"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-04 17:30:17.586263"], ["updated_at", "2020-03-04 17:30:17.586263"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Started GET "/" for ::1 at 2020-03-04 09:30:38 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (5.7ms)
+Completed 200 OK in 19ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-03-04 09:30:38 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
+/usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/" for ::1 at 2020-03-06 10:21:05 -0800
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 25ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mhps" for ::1 at 2020-03-06 10:21:55 -0800
+Processing by MhpsController#index as */*
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (Unable to autoload constant Mhp, expected /Users/Guest/Desktop/Capstone/app/models/mhp.rb to define it):
+  
+app/controllers/mhps_controller.rb:38:in `index'
+  [1m[35m (26.9ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (44.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (8484.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "TherastarTest_development"[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (97.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "TherastarTest_development"[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (19.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "TherastarTest_test"[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (269.5ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (156.7ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateMhps (20200228190443)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE TABLE "mhps" ("id" bigserial primary key, "name" character varying, "occupation" character varying, "address" character varying, "insurance" character varying, "accepting" character varying, "email" character varying, "phone" integer, "bio" character varying, "link" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228190443_create_mhps.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228190443"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateArticles (20200228191112)
+  [1m[35m (39.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "name" character varying, "link" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228191112_create_articles.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191112"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateReviews (20200228191244)
+  [1m[35m (40.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "name" character varying, "subject" character varying, "rating" integer, "content" character varying, "mhp_id" integer)[0m
+  ↳ db/migrate/20200228191244_create_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191244"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to AddForeignKeyForReviews (20200228212911)
+  [1m[35m (40.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_5899c72735"
+FOREIGN KEY ("mhp_id")
+  REFERENCES "mhps" ("id")
+[0m
+  ↳ db/migrate/20200228212911_add_foreign_key_for_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228212911"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-06 18:23:49.168572"], ["updated_at", "2020-03-06 18:23:49.168572"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (23.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "TherastarTest_development"[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (15.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "TherastarTest_test"[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (111.0ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (72.8ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateMhps (20200228190443)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (44.0ms)[0m  [1m[35mCREATE TABLE "mhps" ("id" bigserial primary key, "name" character varying, "occupation" character varying, "address" character varying, "insurance" character varying, "accepting" character varying, "email" character varying, "phone" integer, "bio" character varying, "link" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228190443_create_mhps.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228190443"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateArticles (20200228191112)
+  [1m[35m (43.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "name" character varying, "link" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228191112_create_articles.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191112"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to CreateReviews (20200228191244)
+  [1m[35m (40.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "name" character varying, "subject" character varying, "rating" integer, "content" character varying, "mhp_id" integer)[0m
+  ↳ db/migrate/20200228191244_create_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191244"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+Migrating to AddForeignKeyForReviews (20200228212911)
+  [1m[35m (40.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_5899c72735"
+FOREIGN KEY ("mhp_id")
+  REFERENCES "mhps" ("id")
+[0m
+  ↳ db/migrate/20200228212911_add_foreign_key_for_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228212911"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-06 18:37:21.235496"], ["updated_at", "2020-03-06 18:37:21.235496"]]
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3969778060701379920)[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (6.8ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sugar"], ["occupation", "Precious"], ["address", "Harley"], ["insurance", "Harley"], ["accepting", "Zoey"], ["email", "Coco"], ["phone", 0], ["bio", "Bear"], ["link", "Princess"], ["created_at", "2020-03-06 18:38:42.356386"], ["updated_at", "2020-03-06 18:38:42.356386"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Casey"], ["occupation", "Bo"], ["address", "Rusty"], ["insurance", "Lady"], ["accepting", "Baby"], ["email", "Snickers"], ["phone", 0], ["bio", "Shadow"], ["link", "Oscar"], ["created_at", "2020-03-06 18:38:42.367845"], ["updated_at", "2020-03-06 18:38:42.367845"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.6ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Honey"], ["occupation", "Rosie"], ["address", "Oreo"], ["insurance", "Marley"], ["accepting", "Abby"], ["email", "Casey"], ["phone", 0], ["bio", "Sophie"], ["link", "Zoey"], ["created_at", "2020-03-06 18:38:42.371477"], ["updated_at", "2020-03-06 18:38:42.371477"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (1.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Zoe"], ["occupation", "Angel"], ["address", "Shadow"], ["insurance", "Bo"], ["accepting", "Teddy"], ["email", "Mia"], ["phone", 0], ["bio", "Sophie"], ["link", "Missy"], ["created_at", "2020-03-06 18:38:42.375531"], ["updated_at", "2020-03-06 18:38:42.375531"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Zoey"], ["occupation", "Sophie"], ["address", "Max"], ["insurance", "Daisy"], ["accepting", "Max"], ["email", "Toby"], ["phone", 0], ["bio", "Jasper"], ["link", "Missy"], ["created_at", "2020-03-06 18:38:42.379773"], ["updated_at", "2020-03-06 18:38:42.379773"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Annie"], ["occupation", "Sparky"], ["address", "Bear"], ["insurance", "Bear"], ["accepting", "Abby"], ["email", "Cody"], ["phone", 0], ["bio", "Sadie"], ["link", "Dakota"], ["created_at", "2020-03-06 18:38:42.382340"], ["updated_at", "2020-03-06 18:38:42.382340"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (1.0ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Angel"], ["occupation", "Scooter"], ["address", "Honey"], ["insurance", "Blue"], ["accepting", "Sparky"], ["email", "Pepper"], ["phone", 0], ["bio", "Roxy"], ["link", "Bandit"], ["created_at", "2020-03-06 18:38:42.386122"], ["updated_at", "2020-03-06 18:38:42.386122"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.5ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Tyson"], ["occupation", "Jake"], ["address", "Gizmo"], ["insurance", "Sandy"], ["accepting", "Harvey"], ["email", "Baxter"], ["phone", 0], ["bio", "Harley"], ["link", "Peanut"], ["created_at", "2020-03-06 18:38:42.392182"], ["updated_at", "2020-03-06 18:38:42.392182"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Lucy"], ["occupation", "Ruby"], ["address", "Cocoa"], ["insurance", "Mia"], ["accepting", "Max"], ["email", "Scooter"], ["phone", 0], ["bio", "Rosie"], ["link", "Zoe"], ["created_at", "2020-03-06 18:38:42.395039"], ["updated_at", "2020-03-06 18:38:42.395039"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Bubba"], ["occupation", "Daisy"], ["address", "Lady"], ["insurance", "Milo"], ["accepting", "Zoe"], ["email", "Annie"], ["phone", 0], ["bio", "Shadow"], ["link", "Sugar"], ["created_at", "2020-03-06 18:38:42.397598"], ["updated_at", "2020-03-06 18:38:42.397598"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Diesel"], ["occupation", "Cody"], ["address", "Baby"], ["insurance", "Sandy"], ["accepting", "Sasha"], ["email", "Gracie"], ["phone", 0], ["bio", "Buster"], ["link", "Rusty"], ["created_at", "2020-03-06 18:38:42.400103"], ["updated_at", "2020-03-06 18:38:42.400103"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Scooter"], ["occupation", "Jasper"], ["address", "Diamond"], ["insurance", "Dixie"], ["accepting", "Sasha"], ["email", "Milo"], ["phone", 0], ["bio", "Cody"], ["link", "Daisy"], ["created_at", "2020-03-06 18:38:42.402759"], ["updated_at", "2020-03-06 18:38:42.402759"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (3.0ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Pepper"], ["occupation", "Oreo"], ["address", "Rascal"], ["insurance", "Spike"], ["accepting", "Maggie"], ["email", "Chico"], ["phone", 0], ["bio", "Baby"], ["link", "Rocky"], ["created_at", "2020-03-06 18:38:42.405276"], ["updated_at", "2020-03-06 18:38:42.405276"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.5ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sophie"], ["occupation", "Lilly"], ["address", "Bandit"], ["insurance", "Sasha"], ["accepting", "Honey"], ["email", "Oscar"], ["phone", 0], ["bio", "Bubba"], ["link", "Cookie"], ["created_at", "2020-03-06 18:38:42.411502"], ["updated_at", "2020-03-06 18:38:42.411502"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sugar"], ["occupation", "Gracie"], ["address", "Princess"], ["insurance", "Lilly"], ["accepting", "Rosie"], ["email", "Harvey"], ["phone", 0], ["bio", "Luna"], ["link", "Daisy"], ["created_at", "2020-03-06 18:38:42.414809"], ["updated_at", "2020-03-06 18:38:42.414809"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sassy"], ["occupation", "Toby"], ["address", "Milo"], ["insurance", "Luna"], ["accepting", "Annie"], ["email", "Milo"], ["phone", 0], ["bio", "Lady"], ["link", "Sparky"], ["created_at", "2020-03-06 18:38:42.417548"], ["updated_at", "2020-03-06 18:38:42.417548"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Annie"], ["occupation", "Sadie"], ["address", "Peanut"], ["insurance", "Chico"], ["accepting", "Sasha"], ["email", "Rex"], ["phone", 0], ["bio", "Teddy"], ["link", "Bella"], ["created_at", "2020-03-06 18:38:42.420149"], ["updated_at", "2020-03-06 18:38:42.420149"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Roxy"], ["occupation", "Rex"], ["address", "Rascal"], ["insurance", "Rocky"], ["accepting", "Buster"], ["email", "Lily"], ["phone", 0], ["bio", "Shadow"], ["link", "Sadie"], ["created_at", "2020-03-06 18:38:42.422286"], ["updated_at", "2020-03-06 18:38:42.422286"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Lucy"], ["occupation", "Ruby"], ["address", "Tyson"], ["insurance", "Shadow"], ["accepting", "Bubba"], ["email", "Roxy"], ["phone", 0], ["bio", "Chloe"], ["link", "Coco"], ["created_at", "2020-03-06 18:38:42.424457"], ["updated_at", "2020-03-06 18:38:42.424457"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Chico"], ["occupation", "Rex"], ["address", "Sandy"], ["insurance", "Rocky"], ["accepting", "Spike"], ["email", "Snoopy"], ["phone", 0], ["bio", "Baxter"], ["link", "Sophie"], ["created_at", "2020-03-06 18:38:42.426550"], ["updated_at", "2020-03-06 18:38:42.426550"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oliver"], ["link", "Angel"], ["description", "Molly"], ["created_at", "2020-03-06 18:38:42.438285"], ["updated_at", "2020-03-06 18:38:42.438285"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (40.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lucy"], ["link", "Charlie"], ["description", "Tiger"], ["created_at", "2020-03-06 18:38:42.481616"], ["updated_at", "2020-03-06 18:38:42.481616"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bella"], ["link", "Sooty"], ["description", "Poppy"], ["created_at", "2020-03-06 18:38:42.484643"], ["updated_at", "2020-03-06 18:38:42.484643"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Millie"], ["link", "Bella"], ["description", "Smudge"], ["created_at", "2020-03-06 18:38:42.487206"], ["updated_at", "2020-03-06 18:38:42.487206"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Tiger"], ["link", "Sam"], ["description", "Chloe"], ["created_at", "2020-03-06 18:38:42.489652"], ["updated_at", "2020-03-06 18:38:42.489652"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Misty"], ["link", "Felix"], ["description", "Missy"], ["created_at", "2020-03-06 18:38:42.491798"], ["updated_at", "2020-03-06 18:38:42.491798"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.9ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Poppy"], ["link", "Bella"], ["description", "Bella"], ["created_at", "2020-03-06 18:38:42.497354"], ["updated_at", "2020-03-06 18:38:42.497354"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sam"], ["link", "Simba"], ["description", "Shadow"], ["created_at", "2020-03-06 18:38:42.507271"], ["updated_at", "2020-03-06 18:38:42.507271"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (1.1ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Alfie"], ["link", "Jasper"], ["description", "Oliver"], ["created_at", "2020-03-06 18:38:42.511740"], ["updated_at", "2020-03-06 18:38:42.511740"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Angel"], ["link", "Lucky"], ["description", "Chloe"], ["created_at", "2020-03-06 18:38:42.516028"], ["updated_at", "2020-03-06 18:38:42.516028"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Molly"], ["link", "Charlie"], ["description", "Poppy"], ["created_at", "2020-03-06 18:38:42.522807"], ["updated_at", "2020-03-06 18:38:42.522807"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bella"], ["link", "Shadow"], ["description", "Poppy"], ["created_at", "2020-03-06 18:38:42.527625"], ["updated_at", "2020-03-06 18:38:42.527625"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Milo"], ["link", "Angel"], ["description", "Daisy"], ["created_at", "2020-03-06 18:38:42.531254"], ["updated_at", "2020-03-06 18:38:42.531254"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Smokey"], ["link", "Daisy"], ["description", "Felix"], ["created_at", "2020-03-06 18:38:42.534157"], ["updated_at", "2020-03-06 18:38:42.534157"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Simba"], ["link", "Bella"], ["description", "Sooty"], ["created_at", "2020-03-06 18:38:42.536976"], ["updated_at", "2020-03-06 18:38:42.536976"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Coco"], ["link", "Smokey"], ["description", "Millie"], ["created_at", "2020-03-06 18:38:42.540127"], ["updated_at", "2020-03-06 18:38:42.540127"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oliver"], ["link", "Oliver"], ["description", "Millie"], ["created_at", "2020-03-06 18:38:42.543005"], ["updated_at", "2020-03-06 18:38:42.543005"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Angel"], ["link", "Lily"], ["description", "Lucy"], ["created_at", "2020-03-06 18:38:42.545741"], ["updated_at", "2020-03-06 18:38:42.545741"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oliver"], ["link", "Lucy"], ["description", "Oliver"], ["created_at", "2020-03-06 18:38:42.548400"], ["updated_at", "2020-03-06 18:38:42.548400"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sooty"], ["link", "Daisy"], ["description", "Oliver"], ["created_at", "2020-03-06 18:38:42.551170"], ["updated_at", "2020-03-06 18:38:42.551170"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.8ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Cody"], ["occupation", "Diesel"], ["address", "Princess"], ["insurance", "Jasper"], ["accepting", "Bruno"], ["email", "Diesel"], ["phone", 0], ["bio", "Cookie"], ["link", "Sassy"], ["created_at", "2020-03-06 18:41:13.644457"], ["updated_at", "2020-03-06 18:41:13.644457"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Teddy"], ["occupation", "Harley"], ["address", "Bella"], ["insurance", "Ruby"], ["accepting", "Baxter"], ["email", "Daisy"], ["phone", 0], ["bio", "Murphy"], ["link", "Cooper"], ["created_at", "2020-03-06 18:41:13.649026"], ["updated_at", "2020-03-06 18:41:13.649026"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Chloe"], ["occupation", "Max"], ["address", "Mia"], ["insurance", "Max"], ["accepting", "Bandit"], ["email", "Blue"], ["phone", 0], ["bio", "Baby"], ["link", "Bruno"], ["created_at", "2020-03-06 18:41:13.652424"], ["updated_at", "2020-03-06 18:41:13.652424"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Precious"], ["occupation", "Roxie"], ["address", "Teddy"], ["insurance", "Taz"], ["accepting", "Patches"], ["email", "Tank"], ["phone", 0], ["bio", "Coco"], ["link", "Buster"], ["created_at", "2020-03-06 18:41:13.655039"], ["updated_at", "2020-03-06 18:41:13.655039"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Scooter"], ["occupation", "Roxie"], ["address", "Precious"], ["insurance", "Charlie"], ["accepting", "Brutus"], ["email", "Cody"], ["phone", 0], ["bio", "Sadie"], ["link", "Cooper"], ["created_at", "2020-03-06 18:41:13.657643"], ["updated_at", "2020-03-06 18:41:13.657643"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.5ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Cody"], ["occupation", "Sassy"], ["address", "Zeus"], ["insurance", "Abby"], ["accepting", "Dixie"], ["email", "Molly"], ["phone", 0], ["bio", "Peanut"], ["link", "Oscar"], ["created_at", "2020-03-06 18:41:13.660095"], ["updated_at", "2020-03-06 18:41:13.660095"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.6ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Taz"], ["occupation", "Snoopy"], ["address", "Precious"], ["insurance", "Duke"], ["accepting", "Tank"], ["email", "Max"], ["phone", 0], ["bio", "Belle"], ["link", "Ruby"], ["created_at", "2020-03-06 18:41:13.663160"], ["updated_at", "2020-03-06 18:41:13.663160"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Lilly"], ["occupation", "Lexi"], ["address", "Jasmine"], ["insurance", "Charlie"], ["accepting", "Jack"], ["email", "Blue"], ["phone", 0], ["bio", "Teddy"], ["link", "Maggie"], ["created_at", "2020-03-06 18:41:13.666585"], ["updated_at", "2020-03-06 18:41:13.666585"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Harley"], ["occupation", "Rusty"], ["address", "Oreo"], ["insurance", "Cooper"], ["accepting", "Sam"], ["email", "Pepper"], ["phone", 0], ["bio", "Rocky"], ["link", "Dakota"], ["created_at", "2020-03-06 18:41:13.669008"], ["updated_at", "2020-03-06 18:41:13.669008"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Scooter"], ["occupation", "Marley"], ["address", "Blue"], ["insurance", "Harvey"], ["accepting", "Tank"], ["email", "Taz"], ["phone", 0], ["bio", "Baby"], ["link", "Marley"], ["created_at", "2020-03-06 18:41:13.671316"], ["updated_at", "2020-03-06 18:41:13.671316"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Bo"], ["occupation", "Marley"], ["address", "Lexi"], ["insurance", "Lucy"], ["accepting", "Diamond"], ["email", "Belle"], ["phone", 0], ["bio", "Rusty"], ["link", "Bo"], ["created_at", "2020-03-06 18:41:13.673623"], ["updated_at", "2020-03-06 18:41:13.673623"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Honey"], ["occupation", "Harvey"], ["address", "Casey"], ["insurance", "Sammy"], ["accepting", "Tank"], ["email", "Lucy"], ["phone", 0], ["bio", "Murphy"], ["link", "Diamond"], ["created_at", "2020-03-06 18:41:13.676027"], ["updated_at", "2020-03-06 18:41:13.676027"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Teddy"], ["occupation", "Coco"], ["address", "Marley"], ["insurance", "Bo"], ["accepting", "Sassy"], ["email", "Angel"], ["phone", 0], ["bio", "Chance"], ["link", "Gizmo"], ["created_at", "2020-03-06 18:41:13.678794"], ["updated_at", "2020-03-06 18:41:13.678794"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sassy"], ["occupation", "Casey"], ["address", "Ginger"], ["insurance", "Rex"], ["accepting", "Buddy"], ["email", "Sassy"], ["phone", 0], ["bio", "Annie"], ["link", "Oreo"], ["created_at", "2020-03-06 18:41:13.681915"], ["updated_at", "2020-03-06 18:41:13.681915"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Teddy"], ["occupation", "Rusty"], ["address", "Bear"], ["insurance", "Oscar"], ["accepting", "Cookie"], ["email", "Pepper"], ["phone", 0], ["bio", "Tank"], ["link", "Sammy"], ["created_at", "2020-03-06 18:41:13.684988"], ["updated_at", "2020-03-06 18:41:13.684988"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Oscar"], ["occupation", "Luna"], ["address", "Precious"], ["insurance", "Gracie"], ["accepting", "Max"], ["email", "Molly"], ["phone", 0], ["bio", "Buster"], ["link", "Lucky"], ["created_at", "2020-03-06 18:41:13.687570"], ["updated_at", "2020-03-06 18:41:13.687570"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Cookie"], ["occupation", "Sophie"], ["address", "Baxter"], ["insurance", "Bandit"], ["accepting", "Duke"], ["email", "Ginger"], ["phone", 0], ["bio", "Missy"], ["link", "Tyson"], ["created_at", "2020-03-06 18:41:13.689836"], ["updated_at", "2020-03-06 18:41:13.689836"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Luna"], ["occupation", "Harley"], ["address", "Sandy"], ["insurance", "Bo"], ["accepting", "Bear"], ["email", "Sophie"], ["phone", 0], ["bio", "Baxter"], ["link", "Sam"], ["created_at", "2020-03-06 18:41:13.692058"], ["updated_at", "2020-03-06 18:41:13.692058"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.5ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Shadow"], ["occupation", "Shadow"], ["address", "Cookie"], ["insurance", "Abby"], ["accepting", "Duke"], ["email", "Coco"], ["phone", 0], ["bio", "Chance"], ["link", "Teddy"], ["created_at", "2020-03-06 18:41:13.695420"], ["updated_at", "2020-03-06 18:41:13.695420"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.4ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Baby"], ["occupation", "Chance"], ["address", "Rex"], ["insurance", "Casey"], ["accepting", "Honey"], ["email", "Chloe"], ["phone", 0], ["bio", "Bear"], ["link", "Princess"], ["created_at", "2020-03-06 18:41:13.699178"], ["updated_at", "2020-03-06 18:41:13.699178"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Alfie"], ["link", "Millie"], ["description", "Felix"], ["created_at", "2020-03-06 18:41:13.722804"], ["updated_at", "2020-03-06 18:41:13.722804"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oscar"], ["link", "Tiger"], ["description", "Chloe"], ["created_at", "2020-03-06 18:41:13.725653"], ["updated_at", "2020-03-06 18:41:13.725653"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bella"], ["link", "Molly"], ["description", "Lucy"], ["created_at", "2020-03-06 18:41:13.727928"], ["updated_at", "2020-03-06 18:41:13.727928"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oscar"], ["link", "Max"], ["description", "Sam"], ["created_at", "2020-03-06 18:41:13.730350"], ["updated_at", "2020-03-06 18:41:13.730350"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Shadow"], ["link", "Molly"], ["description", "Coco"], ["created_at", "2020-03-06 18:41:13.733207"], ["updated_at", "2020-03-06 18:41:13.733207"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Molly"], ["link", "Lily"], ["description", "Millie"], ["created_at", "2020-03-06 18:41:13.735661"], ["updated_at", "2020-03-06 18:41:13.735661"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Tiger"], ["link", "Charlie"], ["description", "Misty"], ["created_at", "2020-03-06 18:41:13.737605"], ["updated_at", "2020-03-06 18:41:13.737605"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Milo"], ["link", "Sooty"], ["description", "Milo"], ["created_at", "2020-03-06 18:41:13.739632"], ["updated_at", "2020-03-06 18:41:13.739632"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Milo"], ["link", "Misty"], ["description", "Jasper"], ["created_at", "2020-03-06 18:41:13.741432"], ["updated_at", "2020-03-06 18:41:13.741432"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lucky"], ["link", "Shadow"], ["description", "Shadow"], ["created_at", "2020-03-06 18:41:13.743107"], ["updated_at", "2020-03-06 18:41:13.743107"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Molly"], ["link", "Misty"], ["description", "Misty"], ["created_at", "2020-03-06 18:41:13.745391"], ["updated_at", "2020-03-06 18:41:13.745391"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Shadow"], ["link", "Alfie"], ["description", "Simba"], ["created_at", "2020-03-06 18:41:13.747868"], ["updated_at", "2020-03-06 18:41:13.747868"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Shadow"], ["link", "Millie"], ["description", "Bella"], ["created_at", "2020-03-06 18:41:13.750276"], ["updated_at", "2020-03-06 18:41:13.750276"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oscar"], ["link", "Jasper"], ["description", "Smudge"], ["created_at", "2020-03-06 18:41:13.752257"], ["updated_at", "2020-03-06 18:41:13.752257"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lily"], ["link", "Jasper"], ["description", "Missy"], ["created_at", "2020-03-06 18:41:13.754491"], ["updated_at", "2020-03-06 18:41:13.754491"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Charlie"], ["link", "Oliver"], ["description", "Shadow"], ["created_at", "2020-03-06 18:41:13.756322"], ["updated_at", "2020-03-06 18:41:13.756322"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Millie"], ["link", "Oscar"], ["description", "Missy"], ["created_at", "2020-03-06 18:41:13.758199"], ["updated_at", "2020-03-06 18:41:13.758199"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lily"], ["link", "Molly"], ["description", "Lucky"], ["created_at", "2020-03-06 18:41:13.759872"], ["updated_at", "2020-03-06 18:41:13.759872"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lily"], ["link", "Felix"], ["description", "Jasper"], ["created_at", "2020-03-06 18:41:13.761754"], ["updated_at", "2020-03-06 18:41:13.761754"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Molly"], ["link", "Daisy"], ["description", "Simba"], ["created_at", "2020-03-06 18:41:13.763859"], ["updated_at", "2020-03-06 18:41:13.763859"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (44.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lily"], ["subject", "Charlie"], ["rating", 0], ["content", "Lucky"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smudge"], ["subject", "Chloe"], ["rating", 0], ["content", "Missy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Max"], ["subject", "Poppy"], ["rating", 0], ["content", "Oliver"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Shadow"], ["subject", "Coco"], ["rating", 0], ["content", "Missy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chloe"], ["subject", "Angel"], ["rating", 0], ["content", "Oliver"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Molly"], ["subject", "Missy"], ["rating", 0], ["content", "Felix"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (4.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Daisy"], ["subject", "Shadow"], ["rating", 0], ["content", "Millie"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Simba"], ["subject", "Sam"], ["rating", 0], ["content", "Oliver"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smudge"], ["subject", "Molly"], ["rating", 0], ["content", "Poppy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Coco"], ["subject", "Charlie"], ["rating", 0], ["content", "Tiger"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sam"], ["subject", "Chloe"], ["rating", 0], ["content", "Jasper"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (4.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Charlie"], ["subject", "Felix"], ["rating", 0], ["content", "Smudge"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Molly"], ["subject", "Daisy"], ["rating", 0], ["content", "Oliver"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (1.0ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oliver"], ["subject", "Tiger"], ["rating", 0], ["content", "Charlie"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chloe"], ["subject", "Tiger"], ["rating", 0], ["content", "Lucy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Felix"], ["subject", "Lucy"], ["rating", 0], ["content", "Jasper"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Daisy"], ["subject", "Sam"], ["rating", 0], ["content", "Charlie"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Milo"], ["subject", "Sam"], ["rating", 0], ["content", "Angel"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tiger"], ["subject", "Sooty"], ["rating", 0], ["content", "Lucy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sam"], ["subject", "Tiger"], ["rating", 0], ["content", "Lucky"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "mhps"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+  ↳ db/seeds.rb:50
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  ↳ db/seeds.rb:51
+Started GET "/" for ::1 at 2020-03-06 10:42:35 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mhps" for ::1 at 2020-03-06 10:42:38 -0800
+Processing by MhpsController#index as */*
+  [1m[36mMhp Load (42.4ms)[0m  [1m[34mSELECT "mhps".* FROM "mhps" WHERE (link like '%%')[0m
+  ↳ app/controllers/mhps_controller.rb:69
+Completed 200 OK in 87ms (Views: 35.4ms | ActiveRecord: 48.9ms)
+
+

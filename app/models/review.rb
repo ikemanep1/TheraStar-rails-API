@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
+  # belongs_to :mhp
   validates :name, presence: true
   validates :subject, presence: true
   validates :rating, presence: true

@@ -1,5 +1,4 @@
-class Review < ApplicationRecord
-  belongs_to :mhp
+class Mhp < ApplicationRecord
   validates :name, presence: true
   validates :occupation, presence: true
   validates :address, presence: true
