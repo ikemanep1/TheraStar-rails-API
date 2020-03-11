@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_212911) do
     t.string "insurance"
     t.string "accepting"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.string "bio"
     t.string "link"
     t.datetime "created_at", null: false

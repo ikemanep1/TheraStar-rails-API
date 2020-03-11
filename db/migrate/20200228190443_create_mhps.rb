@@ -7,7 +7,7 @@ class CreateMhps < ActiveRecord::Migration[5.2]
       t.column :insurance, :string
       t.column :accepting, :string
       t.column :email, :string
-      t.column :phone, :integer
+      t.column :phone, :string
       t.column :bio, :string
       t.column :link, :string
       t.timestamps
