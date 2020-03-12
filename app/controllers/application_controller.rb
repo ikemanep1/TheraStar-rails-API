@@ -6,5 +6,6 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid do |exception|
     json_response({ message: exception.message }, :not_found)
   end
+  skip_before_filter :verify_authenticity_token, :only => [:update]
   private
 end
