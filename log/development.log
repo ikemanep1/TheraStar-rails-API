@@ -3770,3 +3770,1160 @@ rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
 /usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
 /usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
 /usr/local/Cellar/ruby/2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+  [1m[35m (624.4ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (125.4ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3969778060701379920)[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+Migrating to CreateMhps (20200228190443)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "mhps" ("id" bigserial primary key, "name" character varying, "occupation" character varying, "address" character varying, "insurance" character varying, "accepting" character varying, "email" character varying, "phone" character varying, "bio" character varying, "link" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228190443_create_mhps.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228190443"]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+Migrating to CreateArticles (20200228191112)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "name" character varying, "link" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200228191112_create_articles.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191112"]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+Migrating to CreateReviews (20200228191244)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "name" character varying, "subject" character varying, "rating" integer, "content" character varying, "mhp_id" integer)[0m
+  ↳ db/migrate/20200228191244_create_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (3.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228191244"]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+Migrating to AddForeignKeyForReviews (20200228212911)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_5899c72735"
+FOREIGN KEY ("mhp_id")
+  REFERENCES "mhps" ("id")
+[0m
+  ↳ db/migrate/20200228212911_add_foreign_key_for_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200228212911"]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-19 04:01:22.989446"], ["updated_at", "2020-04-19 04:01:22.989446"]]
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3969778060701379920)[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.7ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Roxy"], ["occupation", "Jasmine"], ["address", "Sasha"], ["insurance", "Precious"], ["accepting", "Coco"], ["email", "Ginger"], ["phone", "Princess"], ["bio", "Bella"], ["link", "Lexi"], ["created_at", "2020-04-19 04:01:32.523727"], ["updated_at", "2020-04-19 04:01:32.523727"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.3ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Jake"], ["occupation", "Rex"], ["address", "Charlie"], ["insurance", "Oscar"], ["accepting", "Sandy"], ["email", "Harvey"], ["phone", "Gizmo"], ["bio", "Milo"], ["link", "Marley"], ["created_at", "2020-04-19 04:01:32.526637"], ["updated_at", "2020-04-19 04:01:32.526637"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Baby"], ["occupation", "Princess"], ["address", "Zeus"], ["insurance", "Chance"], ["accepting", "Cooper"], ["email", "Lexi"], ["phone", "Casey"], ["bio", "Casey"], ["link", "Abby"], ["created_at", "2020-04-19 04:01:32.528716"], ["updated_at", "2020-04-19 04:01:32.528716"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sugar"], ["occupation", "Missy"], ["address", "Lady"], ["insurance", "Cookie"], ["accepting", "Honey"], ["email", "Sadie"], ["phone", "Bear"], ["bio", "Roxie"], ["link", "Abby"], ["created_at", "2020-04-19 04:01:32.530425"], ["updated_at", "2020-04-19 04:01:32.530425"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Angel"], ["occupation", "Roxy"], ["address", "Lexi"], ["insurance", "Sasha"], ["accepting", "Tyson"], ["email", "Riley"], ["phone", "Bo"], ["bio", "Diesel"], ["link", "Peanut"], ["created_at", "2020-04-19 04:01:32.531889"], ["updated_at", "2020-04-19 04:01:32.531889"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Diamond"], ["occupation", "Bailey"], ["address", "Lexi"], ["insurance", "Harley"], ["accepting", "Buster"], ["email", "Buster"], ["phone", "Bubba"], ["bio", "Jasmine"], ["link", "Sasha"], ["created_at", "2020-04-19 04:01:32.533505"], ["updated_at", "2020-04-19 04:01:32.533505"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Rex"], ["occupation", "Luna"], ["address", "Dakota"], ["insurance", "Zoe"], ["accepting", "Bandit"], ["email", "Jack"], ["phone", "Abby"], ["bio", "Peanut"], ["link", "Snoopy"], ["created_at", "2020-04-19 04:01:32.535104"], ["updated_at", "2020-04-19 04:01:32.535104"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Coco"], ["occupation", "Harley"], ["address", "Riley"], ["insurance", "Chance"], ["accepting", "Rocky"], ["email", "Coco"], ["phone", "Scooter"], ["bio", "Riley"], ["link", "Diamond"], ["created_at", "2020-04-19 04:01:32.536626"], ["updated_at", "2020-04-19 04:01:32.536626"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Princess"], ["occupation", "Roxy"], ["address", "Missy"], ["insurance", "Sammy"], ["accepting", "Bailey"], ["email", "Jasper"], ["phone", "Charlie"], ["bio", "Snickers"], ["link", "Spike"], ["created_at", "2020-04-19 04:01:32.538178"], ["updated_at", "2020-04-19 04:01:32.538178"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Lilly"], ["occupation", "Bear"], ["address", "Cody"], ["insurance", "Lucky"], ["accepting", "Zoey"], ["email", "Blue"], ["phone", "Cooper"], ["bio", "Diamond"], ["link", "Sophie"], ["created_at", "2020-04-19 04:01:32.539725"], ["updated_at", "2020-04-19 04:01:32.539725"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Chance"], ["occupation", "Roxie"], ["address", "Princess"], ["insurance", "Gizmo"], ["accepting", "Chance"], ["email", "Bear"], ["phone", "Peanut"], ["bio", "Roxy"], ["link", "Lola"], ["created_at", "2020-04-19 04:01:32.541302"], ["updated_at", "2020-04-19 04:01:32.541302"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Ruby"], ["occupation", "Diesel"], ["address", "Baby"], ["insurance", "Murphy"], ["accepting", "Angel"], ["email", "Toby"], ["phone", "Sadie"], ["bio", "Patches"], ["link", "Angel"], ["created_at", "2020-04-19 04:01:32.542756"], ["updated_at", "2020-04-19 04:01:32.542756"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Lily"], ["occupation", "Tucker"], ["address", "Ginger"], ["insurance", "Sam"], ["accepting", "Princess"], ["email", "Luna"], ["phone", "Chance"], ["bio", "Brutus"], ["link", "Bruno"], ["created_at", "2020-04-19 04:01:32.544295"], ["updated_at", "2020-04-19 04:01:32.544295"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sam"], ["occupation", "Marley"], ["address", "Sparky"], ["insurance", "Rosie"], ["accepting", "Shadow"], ["email", "Lady"], ["phone", "Patches"], ["bio", "Mia"], ["link", "Honey"], ["created_at", "2020-04-19 04:01:32.545813"], ["updated_at", "2020-04-19 04:01:32.545813"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Mia"], ["occupation", "Abby"], ["address", "Sammy"], ["insurance", "Princess"], ["accepting", "Marley"], ["email", "Snoopy"], ["phone", "Coco"], ["bio", "Diamond"], ["link", "Bear"], ["created_at", "2020-04-19 04:01:32.547303"], ["updated_at", "2020-04-19 04:01:32.547303"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Precious"], ["occupation", "Rascal"], ["address", "Lilly"], ["insurance", "Harvey"], ["accepting", "Teddy"], ["email", "Spike"], ["phone", "Zoe"], ["bio", "Marley"], ["link", "Max"], ["created_at", "2020-04-19 04:01:32.548752"], ["updated_at", "2020-04-19 04:01:32.548752"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Mia"], ["occupation", "Sandy"], ["address", "Sam"], ["insurance", "Pepper"], ["accepting", "Tucker"], ["email", "Molly"], ["phone", "Missy"], ["bio", "Sugar"], ["link", "Bear"], ["created_at", "2020-04-19 04:01:32.550302"], ["updated_at", "2020-04-19 04:01:32.550302"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Princess"], ["occupation", "Tyson"], ["address", "Charlie"], ["insurance", "Luna"], ["accepting", "Casey"], ["email", "Riley"], ["phone", "Harley"], ["bio", "Precious"], ["link", "Misty"], ["created_at", "2020-04-19 04:01:32.551877"], ["updated_at", "2020-04-19 04:01:32.551877"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.2ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Oscar"], ["occupation", "Buster"], ["address", "Brutus"], ["insurance", "Lucy"], ["accepting", "Rosie"], ["email", "Jake"], ["phone", "Duke"], ["bio", "Sam"], ["link", "Gracie"], ["created_at", "2020-04-19 04:01:32.553378"], ["updated_at", "2020-04-19 04:01:32.553378"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mMhp Create (0.1ms)[0m  [1m[32mINSERT INTO "mhps" ("name", "occupation", "address", "insurance", "accepting", "email", "phone", "bio", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Sparky"], ["occupation", "Molly"], ["address", "Sammy"], ["insurance", "Maggie"], ["accepting", "Scooter"], ["email", "Sandy"], ["phone", "Taz"], ["bio", "Abby"], ["link", "Rusty"], ["created_at", "2020-04-19 04:01:32.554870"], ["updated_at", "2020-04-19 04:01:32.554870"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Felix"], ["link", "Smokey"], ["description", "Shadow"], ["created_at", "2020-04-19 04:01:32.563735"], ["updated_at", "2020-04-19 04:01:32.563735"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Poppy"], ["link", "Chloe"], ["description", "Smudge"], ["created_at", "2020-04-19 04:01:32.565988"], ["updated_at", "2020-04-19 04:01:32.565988"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Misty"], ["link", "Oscar"], ["description", "Molly"], ["created_at", "2020-04-19 04:01:32.568014"], ["updated_at", "2020-04-19 04:01:32.568014"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Millie"], ["link", "Smokey"], ["description", "Lucky"], ["created_at", "2020-04-19 04:01:32.569963"], ["updated_at", "2020-04-19 04:01:32.569963"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Molly"], ["link", "Millie"], ["description", "Bella"], ["created_at", "2020-04-19 04:01:32.571394"], ["updated_at", "2020-04-19 04:01:32.571394"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Felix"], ["link", "Tiger"], ["description", "Alfie"], ["created_at", "2020-04-19 04:01:32.572734"], ["updated_at", "2020-04-19 04:01:32.572734"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Smudge"], ["link", "Tiger"], ["description", "Tiger"], ["created_at", "2020-04-19 04:01:32.574083"], ["updated_at", "2020-04-19 04:01:32.574083"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lucy"], ["link", "Poppy"], ["description", "Charlie"], ["created_at", "2020-04-19 04:01:32.575418"], ["updated_at", "2020-04-19 04:01:32.575418"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Milo"], ["link", "Oliver"], ["description", "Smokey"], ["created_at", "2020-04-19 04:01:32.576755"], ["updated_at", "2020-04-19 04:01:32.576755"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sooty"], ["link", "Millie"], ["description", "Charlie"], ["created_at", "2020-04-19 04:01:32.577987"], ["updated_at", "2020-04-19 04:01:32.577987"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chloe"], ["link", "Poppy"], ["description", "Coco"], ["created_at", "2020-04-19 04:01:32.579263"], ["updated_at", "2020-04-19 04:01:32.579263"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Max"], ["link", "Alfie"], ["description", "Angel"], ["created_at", "2020-04-19 04:01:32.580619"], ["updated_at", "2020-04-19 04:01:32.580619"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lucy"], ["link", "Lily"], ["description", "Chloe"], ["created_at", "2020-04-19 04:01:32.581986"], ["updated_at", "2020-04-19 04:01:32.581986"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Misty"], ["link", "Alfie"], ["description", "Alfie"], ["created_at", "2020-04-19 04:01:32.583341"], ["updated_at", "2020-04-19 04:01:32.583341"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chloe"], ["link", "Jasper"], ["description", "Sam"], ["created_at", "2020-04-19 04:01:32.584652"], ["updated_at", "2020-04-19 04:01:32.584652"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Shadow"], ["link", "Daisy"], ["description", "Missy"], ["created_at", "2020-04-19 04:01:32.585981"], ["updated_at", "2020-04-19 04:01:32.585981"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lily"], ["link", "Smudge"], ["description", "Smokey"], ["created_at", "2020-04-19 04:01:32.587293"], ["updated_at", "2020-04-19 04:01:32.587293"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.1ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Simba"], ["link", "Charlie"], ["description", "Shadow"], ["created_at", "2020-04-19 04:01:32.588651"], ["updated_at", "2020-04-19 04:01:32.588651"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Millie"], ["link", "Smudge"], ["description", "Lily"], ["created_at", "2020-04-19 04:01:32.590005"], ["updated_at", "2020-04-19 04:01:32.590005"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mArticle Create (0.2ms)[0m  [1m[32mINSERT INTO "articles" ("name", "link", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sooty"], ["link", "Poppy"], ["description", "Sam"], ["created_at", "2020-04-19 04:01:32.591291"], ["updated_at", "2020-04-19 04:01:32.591291"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Simba"], ["subject", "Chloe"], ["rating", 0], ["content", "Molly"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Missy"], ["subject", "Angel"], ["rating", 0], ["content", "Max"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chloe"], ["subject", "Jasper"], ["rating", 0], ["content", "Lucky"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sooty"], ["subject", "Shadow"], ["rating", 0], ["content", "Chloe"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oliver"], ["subject", "Jasper"], ["rating", 0], ["content", "Sam"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smokey"], ["subject", "Charlie"], ["rating", 0], ["content", "Sooty"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oliver"], ["subject", "Coco"], ["rating", 0], ["content", "Sooty"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smudge"], ["subject", "Tiger"], ["rating", 0], ["content", "Lucy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chloe"], ["subject", "Milo"], ["rating", 0], ["content", "Angel"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oscar"], ["subject", "Charlie"], ["rating", 0], ["content", "Missy"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oscar"], ["subject", "Chloe"], ["rating", 0], ["content", "Jasper"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bella"], ["subject", "Smudge"], ["rating", 0], ["content", "Simba"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bella"], ["subject", "Poppy"], ["rating", 0], ["content", "Bella"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smudge"], ["subject", "Smokey"], ["rating", 0], ["content", "Millie"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Poppy"], ["subject", "Max"], ["rating", 0], ["content", "Milo"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tiger"], ["subject", "Sam"], ["rating", 0], ["content", "Oliver"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Coco"], ["subject", "Tiger"], ["rating", 0], ["content", "Smokey"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Molly"], ["subject", "Charlie"], ["rating", 0], ["content", "Bella"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oscar"], ["subject", "Felix"], ["rating", 0], ["content", "Tiger"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "subject", "rating", "content") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Smokey"], ["subject", "Max"], ["rating", 0], ["content", "Molly"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "mhps"[0m
+  ↳ db/seeds.rb:49
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+  ↳ db/seeds.rb:50
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  ↳ db/seeds.rb:51
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_development" ENCODING = 'unicode'[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "TherastarTest_test" ENCODING = 'unicode'[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/bin/rake:23
+Started GET "/" for ::1 at 2020-04-25 13:21:37 -0700
+  [1m[35m (157.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (20.7ms)
+Completed 200 OK in 126ms (Views: 95.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-04-25 13:21:41 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/" for ::1 at 2020-04-25 13:40:12 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 155ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:40:14 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:40:14 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 10ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:46 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:46 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:41:46 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (101.2ms)
+Completed 200 OK in 109ms (Views: 105.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:02 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 62ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:02 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:02 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:08 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:09 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:42:09 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:44:06 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 28ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:44:07 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 10ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:44:07 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:46:11 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 51ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:46:11 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:46:11 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:29 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 66ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:30 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 12ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:30 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:39 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:39 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:50:39 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 12ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:54:31 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 52ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:54:31 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:54:31 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:55:08 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 35ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:55:08 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 12ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:55:08 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:58:11 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 66ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:58:12 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:58:12 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 13:59:58 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 16ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:00:32 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 54ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 40ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:03 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 11ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:21 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 61ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:21 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:21 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:44 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:44 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:03:44 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:10:21 -0700
+  [1m[35m (41.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (15.9ms)
+Completed 200 OK in 63ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:10:48 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 81ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:10:48 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 12ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:10:48 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.7ms)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:11:21 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ikemanep1/.gem/ruby/2.6.5/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:11:26 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 18ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:11:26 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 29ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:11:26 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:14:12 -0700
+Processing by Rails::WelcomeController#index as JSON
+  Parameters: {"welcome"=>{}}
+Completed 406 Not Acceptable in 86ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (Rails::WelcomeController#index is missing a template for this request format and variant.
+
+request.formats: ["application/json"]
+request.variant: []):
+  
+actionpack (5.2.4.1) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.4.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/" for ::1 at 2020-04-25 14:14:14 -0700
+Processing by Rails::WelcomeController#index as JSON
+  Parameters: {"welcome"=>{}}
+Completed 406 Not Acceptable in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (Rails::WelcomeController#index is missing a template for this request format and variant.
+
+request.formats: ["application/json"]
+request.variant: []):
+  
+actionpack (5.2.4.1) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.4.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/" for ::1 at 2020-04-25 14:14:14 -0700
+Processing by Rails::WelcomeController#index as JSON
+  Parameters: {"welcome"=>{}}
+Completed 406 Not Acceptable in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnknownFormat (Rails::WelcomeController#index is missing a template for this request format and variant.
+
+request.formats: ["application/json"]
+request.variant: []):
+  
+actionpack (5.2.4.1) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4.1) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.1) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.2) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.2) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.2) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.4.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+rack (2.2.2) lib/rack/handler/webrick.rb:95:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/ikemanep1/.rubies/ruby-2.6.5/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/" for ::1 at 2020-04-25 14:14:27 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 37ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:14:27 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:14:27 -0700
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-25 14:36:05 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ikemanep1/.gem/ruby/2.6.5/gems/railties-5.2.4.1/lib/rails/templates/rails/welcome/index.html.erb (4.9ms)
+Completed 200 OK in 65ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mhps" for ::1 at 2020-04-25 14:36:20 -0700
+Processing by MhpsController#index as */*
+  [1m[36mMhp Load (348.1ms)[0m  [1m[34mSELECT "mhps".* FROM "mhps" WHERE (link like '%%')[0m
+  ↳ app/controllers/mhps_controller.rb:69
+Completed 200 OK in 1183ms (Views: 226.0ms | ActiveRecord: 855.2ms)
+
+
+Started GET "/mhps" for ::1 at 2020-04-25 14:37:39 -0700
+Started GET "/reviews" for ::1 at 2020-04-25 14:37:39 -0700
+Started GET "/articles" for ::1 at 2020-04-25 14:37:39 -0700
+Processing by MhpsController#index as */*
+  [1m[36mMhp Load (12.3ms)[0m  [1m[34mSELECT "mhps".* FROM "mhps" WHERE (link like '%%')[0m
+  ↳ app/controllers/mhps_controller.rb:69
+Completed 200 OK in 18ms (Views: 4.9ms | ActiveRecord: 12.3ms)
+
+
+Processing by ReviewsController#index as */*
+Processing by ArticlesController#index as */*
+  [1m[36mReview Load (222.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE (content like '%%')[0m
+  ↳ app/controllers/reviews_controller.rb:49
+Completed 200 OK in 369ms (Views: 29.9ms | ActiveRecord: 315.1ms)
+
+
+  [1m[36mArticle Load (171.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE (description like '%%')[0m
+  ↳ app/controllers/articles_controller.rb:45
+Completed 200 OK in 266ms (Views: 6.5ms | ActiveRecord: 176.4ms)
+
+
