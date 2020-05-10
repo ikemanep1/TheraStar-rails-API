@@ -33,6 +33,18 @@ class MhpsController < ApplicationController
       bio = params[:bio]
       @mhps = Mhp.bio_search(bio)
       json_response(@mhps)
+    elsif
+      imgref = params[:imgref]
+      @mhps = Mhp.imgref_search(imgref)
+      json_response(@mhps)
+    elsif
+      latitude = params[:latitude]
+      @mhps = Mhp.latitude_search(latitude)
+      json_response(@mhps)
+    elsif
+      longitude = params[:longitude]
+      @mhps = Mhp.longitude_search(longitude)
+      json_response(@mhps)
     else
       link = params[:link]
       @mhps = Mhp.link_search(link)
@@ -70,6 +82,6 @@ class MhpsController < ApplicationController
   end
 
   def mhp_params
-    params.permit(:name, :occupation, :address, :insurance, :accepting, :email, :phone, :bio, :link)
+    params.permit(:name, :occupation, :address, :insurance, :accepting, :email, :phone, :bio, :link, :imgref, :latitude, :longitude)
   end
 end
