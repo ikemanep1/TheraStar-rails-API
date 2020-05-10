@@ -8,6 +8,7 @@ class Mhp < ApplicationRecord
   validates :phone, presence: true
   validates :bio, presence: true
   validates :link, presence: true
+  validates :imgref, presence: true
   scope :search, -> (search_parameter) { where("name like ?", "%#{search_parameter}%")}
   scope :occupation_search, -> (search_parameter) { where("occupation like ?", "%#{search_parameter}%")}
   scope :address_search, -> (search_parameter) { where("address like ?", "%#{search_parameter}%")}
@@ -17,4 +18,6 @@ class Mhp < ApplicationRecord
   scope :phone_search, -> (search_parameter) { where("phone like ?", "%#{search_parameter}%")}
   scope :bio_search, -> (search_parameter) { where("bio like ?", "%#{search_parameter}%")}
   scope :link_search, -> (search_parameter) { where("link like ?", "%#{search_parameter}%")}
+  scope :latitude_search, -> (search_parameter) { where("latitude like ?", "%#{search_parameter}%")}
+  scope :longitude_search, -> (search_parameter) { where("longitude like ?", "%#{search_parameter}%")}
 end
