@@ -27,5 +27,3 @@ _All gems for this project are present in the Gemfile._
 _MIT licensing_
 
 Copyright (c) 2019 **_Ike Esquivel-Pilloud_**
-
-# friday week 3 work
